@@ -1,6 +1,7 @@
 version: '2'
 
 services:
+
   kenl-elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.3.1
     container_name: kenl-elasticsearch
@@ -34,7 +35,49 @@ services:
       - kenl-elasticsearch
     network_mode: "host"
 
+  kenl-zookeeper:
+    image: kenl-zookeeper:0.0.1
+    container_name: kenl-zookeeper
+    ports:
+      - "2181:2181"
+    restart: always
+    depends_on:
+      - kenl-elasticsearch
+    network_mode: "host"
 
+  kenl-kafka-broker:
+    image: kenl-kafka-base:0.0.1
+    container_name: kenl-kafka-broker
+    restart: always
+    depends_on:
+      - kenl-zookeeper
+    environment:
+      - KAFKA_BROKER_NAME=kenl-kafka-broker
+      - KAFKA_BROKER_ID=1
+      - KAFKA_BROKER_PORT=9092
+      - REPLICATION_FACTOR=2
+      - ADVERTISED_LISTENER=10.12.90.229
+      - ZOOKEEPER_NAME=kenl-zookeeper
+    ports:
+      - "9092:9092"
+    network_mode: "host"
+    
+  kenl-kafka-broker2:
+    image: kenl-kafka-base:0.0.1
+    container_name: kenl-kafka-broker2
+    restart: always
+    depends_on:
+      - kenl-zookeeper
+    environment:
+      - KAFKA_BROKER_NAME=kenl-kafka-broker2
+      - KAFKA_BROKER_ID=2
+      - KAFKA_BROKER_PORT=9093
+      - REPLICATION_FACTOR=2
+      - ADVERTISED_LISTENER=10.12.90.229
+      - ZOOKEEPER_NAME=kenl-zookeeper
+    ports:
+      - "9093:9093"
+    network_mode: "host"
 
 volumes:
   esdata:
