@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/bash
 
 host_ip=$(ip route get 1 | awk '{print $NF;exit}')
 
