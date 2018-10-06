@@ -1,10 +1,11 @@
 
 _Config = {
 
-    TOPIC = "es-demo",
+    TOPIC = "edrlog",
 
     BROKER_LIST = {
-        { host = "172.17.0.3", port = 9092 }
+        { host = "kenl-kafka-broker", port = 9092 },
+        { host = "kenl-kafka-broker2", port = 9093 },
     },
 
     KAFKA_CONFIG= {
