@@ -1,0 +1,41 @@
+version: '2'
+
+services:
+  kenl-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.3.1
+    container_name: kenl-elasticsearch
+    volumes:
+      - ./kenl-elasticsearch/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+      - esdata:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    environment:
+      - "ES_JAVA_OPTS=-Xms2g -Xmx2g"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    restart: always
+    network_mode: "host"
+
+  kenl-logstash:
+    image: docker.elastic.co/logstash/logstash:6.3.1
+    container_name: kenl-logstash
+    volumes:
+      - ./kenl-logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+      - ./kenl-logstash/pipeline:/usr/share/logstash/pipeline
+      - ./kenl-logstash/output_templates:/usr/share/logstash/output_templates
+      - ./kenl-logstash/enrichments/cti:/usr/share/logstash/cti
+    environment:
+      - "LS_JAVA_OPTS=-Xms2g -Xmx2g"
+    restart: always
+    depends_on:
+      - kenl-elasticsearch
+    network_mode: "host"
+
+
+
+volumes:
+  esdata:
+    driver: local
