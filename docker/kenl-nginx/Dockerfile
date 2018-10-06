@@ -1,0 +1,26 @@
+FROM kenl-base:0.0.1
+LABEL maintainer="kenladmin"
+LABEL description="dockerfile base image for nginx"
+
+ENV DEBIAN_FRONTEND noninteractive
+
+# *********** Installing Prerequisites ***************
+# -qq : No output except for errors
+RUN echo "[KENL-NGINX] Updating Ubuntu base image.." \
+  && apt-get update -qq
+
+RUN apt-get -qy clean \
+  autoremove
+
+# *********** Adding HELK scripts and files to Container ***************
+ADD scripts/nginx-entrypoint.sh /opt/kenl/scripts/
+RUN chmod +x /opt/kenl/scripts/nginx-entrypoint.sh
+
+# *********** Installing Nginx ***************
+RUN apt-get install -qqy nginx
+RUN apt-get update -qq
+
+# *********** RUN HELK ***************
+EXPOSE 80
+WORKDIR "/opt/kenl/scripts/"
+ENTRYPOINT ["./nginx-entrypoint.sh"]
