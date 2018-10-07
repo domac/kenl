@@ -12,7 +12,7 @@ RUN echo "[KENL-NGINX] Updating Ubuntu base image.." \
 RUN apt-get -qy clean \
   autoremove
 
-# *********** Adding HELK scripts and files to Container ***************
+# *********** Adding KENL scripts and files to Container ***************
 ADD scripts/nginx-entrypoint.sh /opt/kenl/scripts/
 RUN chmod +x /opt/kenl/scripts/nginx-entrypoint.sh
 
@@ -20,7 +20,7 @@ RUN chmod +x /opt/kenl/scripts/nginx-entrypoint.sh
 RUN apt-get install -qqy nginx
 RUN apt-get update -qq
 
-# *********** RUN HELK ***************
+# *********** RUN KENL ***************
 EXPOSE 80
 WORKDIR "/opt/kenl/scripts/"
 ENTRYPOINT ["./nginx-entrypoint.sh"]

@@ -19,12 +19,6 @@ function get_host_ip()
     host_ip=$(ip route get 1 | awk '{print $NF;exit}')
 }
 
-function evn_prepare()
-{
-    set_hosts
-
-    install_docker_compose
-}
 
 function set_hosts()
 {
@@ -55,14 +49,67 @@ function install_docker_compose()
     fi
 }
 
+function max_map_count()
+{
+    echo "[KENL-INSTALLATION-INFO] Dockerizing KENL.."
+    echo "[KENL-INSTALLATION-INFO] Checking local vm.max_map_count variable and setting it to 262144"
+    MAX_MAP_COUNT=262144
+    if [ -n "$MAX_MAP_COUNT" -a -f /proc/sys/vm/max_map_count ]; then
+        sysctl -q -w vm.max_map_count=$MAX_MAP_COUNT >> $LOGFILE 2>&1
+        ERROR=$?
+        if [ $ERROR -ne 0 ]; then
+            echoerror "Could not set vm.max_map_count to 262144 (Error Code: $ERROR)."
+        fi
+    fi
+}
+
+function install_kenl()
+{
+    cd $WORKSPACE/../docker 
+
+    echo "[KENL-INSTALLATION-INFO] Building & running KENL via docker-compose"
+    docker-compose -f docker-compose-kenl.yml up --build -d >> $LOGFILE 2>&1
+    ERROR=$?
+    if [ $ERROR -ne 0 ]; then
+        echoerror "Could not run KENL via docker-compose (Error Code: $ERROR)."
+        exit 1
+    fi
+}
+
+function kafka_environment()
+{
+    cd $WORKSPACE/../docker 
+
+    echo "[KENL-INSTALLATION-INFO] Setting KAFKA ADVERTISED_LISTENER value..."
+    # ****** Setting KAFKA ADVERTISED_LISTENER environment variable ***********
+    sed -i "s/ADVERTISED_LISTENER=HOSTIP/ADVERTISED_LISTENER=$host_ip/g" docker-compose-kenl.yml
+
+    echo "[KENL-INSTALLATION-INFO] Setting ES_JAVA_OPTS value..."
+    # ****** Setting ES JAVA OPTS environment variable ***********
+    sed -i "s/ES_JAVA_OPTS\=\-Xms2g \-Xmx2g/ES_JAVA_OPTS\=\-Xms6g \-Xmx6g/g" docker-compose-kenl.yml
+}
+
+function evn_prepare()
+{
+    set_hosts
+
+    install_docker_compose
+
+    build_data_link
+
+    #max_map_count
+
+    kafka_environment
+}
+
 function show_banner()
 {
     echo " "
     echo "**********************************************"	
     echo "** KENL - gateway for data push processing  **"
     echo "**                                          **"
-    echo "** HELK build version: 0.0.1                **"
-    echo "** HELK ELK version: 6.3.1                  **"
+    echo "** KENL build version: 0.0.1                **"
+    echo "** KENL ELK version: 6.3.1                  **"
     echo "**********************************************"
     echo " "
     echo "[KENL-INSTALLATION-INFO] WORKING DIR: ${WORKSPACE}"
@@ -77,4 +124,6 @@ show_banner
 get_host_ip
 
 evn_prepare
+
+install_kenl
 

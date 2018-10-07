@@ -56,7 +56,7 @@ services:
       - KAFKA_BROKER_ID=1
       - KAFKA_BROKER_PORT=9092
       - REPLICATION_FACTOR=2
-      - ADVERTISED_LISTENER=10.12.90.229
+      - ADVERTISED_LISTENER=HOSTIP
       - ZOOKEEPER_NAME=kenl-zookeeper
     ports:
       - "9092:9092"
@@ -73,7 +73,7 @@ services:
       - KAFKA_BROKER_ID=2
       - KAFKA_BROKER_PORT=9093
       - REPLICATION_FACTOR=2
-      - ADVERTISED_LISTENER=10.12.90.229
+      - ADVERTISED_LISTENER=HOSTIP
       - ZOOKEEPER_NAME=kenl-zookeeper
     ports:
       - "9093:9093"
