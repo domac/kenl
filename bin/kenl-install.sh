@@ -97,7 +97,7 @@ function evn_prepare()
 
     build_data_link
 
-    #max_map_count
+    max_map_count
 
     kafka_environment
 }
@@ -117,7 +117,7 @@ function show_banner()
 
  # *********** KENL INSTALL pipeline ***************
 
-echo ""
+echo "[KENL-INSTALLATION-INFO] INSTALL START"
 
 show_banner
 
@@ -126,4 +126,6 @@ get_host_ip
 evn_prepare
 
 install_kenl
+
+echo "[KENL-INSTALLATION-INFO] INSTALL FINISH"
 
