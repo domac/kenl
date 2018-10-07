@@ -86,7 +86,7 @@ function kafka_environment()
 
     echo "[KENL-INSTALLATION-INFO] Setting ES_JAVA_OPTS value..."
     # ****** Setting ES JAVA OPTS environment variable ***********
-    sed -i "s/ES_JAVA_OPTS\=\-Xms2g \-Xmx2g/ES_JAVA_OPTS\=\-Xms6g \-Xmx6g/g" docker-compose-kenl.yml
+    sed -i "s/ES_JAVA_OPTS\=\-Xms2g \-Xmx2g/ES_JAVA_OPTS\=\-Xms4g \-Xmx4g/g" docker-compose-kenl.yml
 }
 
 function evn_prepare()

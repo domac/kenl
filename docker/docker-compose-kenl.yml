@@ -35,6 +35,32 @@ services:
       - kenl-elasticsearch
     network_mode: "host"
 
+  kenl-kibana:
+    image: docker.elastic.co/kibana/kibana:6.3.1
+    container_name: kenl-kibana
+    volumes:
+      - ./kenl-kibana/kibana.yml:/usr/share/kibana/config/kibana.yml
+      - ./kenl-kibana/dashboards:/usr/share/kibana/dashboards
+      - ./kenl-kibana/scripts:/usr/share/kibana/scripts
+    entrypoint: /usr/share/kibana/scripts/kibana-entrypoint.sh
+    restart: always
+    depends_on:
+      - kenl-elasticsearch
+    network_mode: "host"
+
+  kenl-nginx:
+    image: cyb3rward0g/kenl-nginx:0.0.3
+    container_name: kenl-nginx
+    volumes:
+      - ./kenl-nginx/htpasswd.users:/etc/nginx/htpasswd.users
+      - ./kenl-nginx/default:/etc/nginx/sites-available/default
+    ports:
+      - "24080:24080"
+    restart: always
+    depends_on:
+      - kenl-kibana
+    network_mode: "host"
+
   kenl-zookeeper:
     image: kenl-zookeeper:0.0.1
     container_name: kenl-zookeeper
