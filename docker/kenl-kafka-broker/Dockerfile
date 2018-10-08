@@ -1,5 +1,4 @@
-FROM  kenl-kafka-base:0.0.1
-
+FROM  domacli/kenl-kafka-base:0.0.1
 LABEL maintainer="kenladmin"
 LABEL description="dockerfile base image for kafka broker"
 
@@ -14,6 +13,8 @@ ADD server.properties ${KAFKA_HOME}/config/
 ADD scripts/kafka-entrypoint.sh /opt/kenl/scripts/
 RUN chmod +x /opt/kenl/scripts/kafka-entrypoint.sh
 
-EXPOSE $KAFKA_BROKER_PORT
+# EXPOSE $KAFKA_BROKER_PORT
+EXPOSE 9091 9092 9093 9094 9095
+
 WORKDIR "/opt/kenl/scripts/"
 ENTRYPOINT ["./kafka-entrypoint.sh"]

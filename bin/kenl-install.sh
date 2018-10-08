@@ -2,8 +2,11 @@
 
 WORKSPACE=$(cd $(dirname $0)/; pwd)
 HOSTS=( kenl-elasticsearch kenl-logstash kenl-zookeeper kenl-kibana kenl-kafka-broker kenl-kafka-broker2 kenl-nginx ) 
-HOSTS_FILE="/tmp/hosts"
+HOSTS_FILE="/etc/hosts"
 LOGFILE="${WORKSPACE}/kenl-install.log"
+function echoerror() {
+    printf "${RC} * ERROR${EC}: $@\n" 1>&2;
+}
 
 function build_data_link()
 {

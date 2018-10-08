@@ -1,4 +1,4 @@
-FROM kenl-base:0.0.1
+FROM domacli/kenl-base:0.0.1
 LABEL maintainer="kenladmin"
 LABEL description="dockerfile base image for nginx"
 

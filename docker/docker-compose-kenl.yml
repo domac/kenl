@@ -49,20 +49,20 @@ services:
     network_mode: "host"
 
   kenl-nginx:
-    image: cyb3rward0g/kenl-nginx:0.0.3
+    image: domacli/kenl-nginx:0.0.1
     container_name: kenl-nginx
     volumes:
       - ./kenl-nginx/htpasswd.users:/etc/nginx/htpasswd.users
       - ./kenl-nginx/default:/etc/nginx/sites-available/default
     ports:
-      - "24080:24080"
+      - "80:80"
     restart: always
     depends_on:
       - kenl-kibana
     network_mode: "host"
 
   kenl-zookeeper:
-    image: kenl-zookeeper:0.0.1
+    image: domacli/kenl-zookeeper:0.0.1
     container_name: kenl-zookeeper
     ports:
       - "2181:2181"
@@ -72,7 +72,7 @@ services:
     network_mode: "host"
 
   kenl-kafka-broker:
-    image: kenl-kafka-base:0.0.1
+    image: domacli/kenl-kafka-base:0.0.1
     container_name: kenl-kafka-broker
     restart: always
     depends_on:
@@ -89,7 +89,7 @@ services:
     network_mode: "host"
     
   kenl-kafka-broker2:
-    image: kenl-kafka-base:0.0.1
+    image: domacli/kenl-kafka-base:0.0.1
     container_name: kenl-kafka-broker2
     restart: always
     depends_on:
