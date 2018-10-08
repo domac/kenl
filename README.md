@@ -33,3 +33,9 @@ docker.io/phusion/baseimage                     0.10.1              2391dfad8777
 ```
 $ cd bin/ && sh kenl-install.sh
 ```
+
+es监控dashboard
+
+浏览器访问：http://ip:9000
+
+![cerebro](http://og0usnhfv.bkt.clouddn.com/cerebro.png)
