@@ -3,7 +3,7 @@
 WORKSPACE=$(cd $(dirname $0)/; pwd)
 HOSTS=( kenl-elasticsearch kenl-logstash kenl-zookeeper kenl-kibana kenl-kafka-broker kenl-kafka-broker2 kenl-nginx ) 
 HOSTS_FILE="/etc/hosts"
-LOGFILE="${WORKSPACE}/kenl-install.log"
+LOGFILE="${WORKSPACE}/install_docker.log"
 function echoerror() {
     printf "${RC} * ERROR${EC}: $@\n" 1>&2;
 }
@@ -130,7 +130,7 @@ function show_banner()
     echo "[KENL-INSTALLATION-INFO] WORKING DIR: ${WORKSPACE}"
 }
 
- # *********** KENL INSTALL pipeline ***************
+# *********** KENL INSTALL DOCKER ***************
 
 echo "[KENL-INSTALLATION-INFO] INSTALL START"
 
