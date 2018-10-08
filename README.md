@@ -5,9 +5,9 @@ dockerized gateway service for data push processing
 
 ## 如何使用
 
-安装依赖环境：
+安装依赖环境：
 - `docker` 
-- `docker-compose`
+- `docker-compose`
 
 (可选) 下载基本docker镜像
 
