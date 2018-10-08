@@ -105,6 +105,16 @@ services:
       - "9093:9093"
     network_mode: "host"
 
+  kenl-cerebro:
+    image: yannart/cerebro:0.8.1
+    container_name: kenl-cerebro
+    ports:
+      - "9000:9000"
+    restart: always
+    depends_on:
+      - kenl-elasticsearch
+    network_mode: "host"
+
 volumes:
   esdata:
     driver: local
