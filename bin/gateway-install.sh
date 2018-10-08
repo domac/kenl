@@ -10,7 +10,7 @@ function setup_gateway()
 {
     if [ -d "${OPENRESTYDIR}/lualib" ]; then
         echo "setup gateway start" >> $LOGFILE 2>&1
-        mkdir -p /etc/openresty
+        mkdir -p ${OPENRESTYCONF}
         cd $WORKSPACE/../gateway/lualib && cp -r kenl_gateway ${OPENRESTYDIR}/lualib/
         cd $WORKSPACE/../gateway && cp -r conf ${OPENRESTYCONF}/
     else
@@ -25,12 +25,20 @@ function openresty_reload()
     $NGINXBIN -c $OPENRESTYCONF/conf/nginx.conf -s reload >> $LOGFILE 2>&1
 }
 
+function install_lua_resty_kafka()
+{
+    cd $WORKSPACE/../gateway
+    wget https://github.com/doujiang24/lua-resty-kafka/archive/master.zip
+    unzip master.zip
+    cp -r $WORKSPACE/../gateway/lua-resty-kafka-master/lib/resty/kafka/  ${OPENRESTYDIR}/lualib/resty/
+}
+
 # *********** KENL INSTALL GATEWAY ***************
 
 echo "[KENL-GATEWAY-INFO] INSTALL START"
 
 setup_gateway
 
-openresty_reload
+install_lua_resty_kafka
 
 echo "[KENL-GATEWAY-INFO] INSTALL FINISH"
