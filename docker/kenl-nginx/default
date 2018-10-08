@@ -3,7 +3,7 @@ server {
     proxy_send_timeout 600;
     proxy_read_timeout 600;
     
-    listen 80;
+    listen 24080;
 
     server_name 127.0.0.1;
 

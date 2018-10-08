@@ -55,7 +55,7 @@ services:
       - ./kenl-nginx/htpasswd.users:/etc/nginx/htpasswd.users
       - ./kenl-nginx/default:/etc/nginx/sites-available/default
     ports:
-      - "80:80"
+      - "24080:24080"
     restart: always
     depends_on:
       - kenl-kibana
@@ -72,7 +72,7 @@ services:
     network_mode: "host"
 
   kenl-kafka-broker:
-    image: domacli/kenl-kafka-base:0.0.1
+    image: domacli/kenl-kafka-broker:0.0.1
     container_name: kenl-kafka-broker
     restart: always
     depends_on:
@@ -89,7 +89,7 @@ services:
     network_mode: "host"
     
   kenl-kafka-broker2:
-    image: domacli/kenl-kafka-base:0.0.1
+    image: domacli/kenl-kafka-broker:0.0.1
     container_name: kenl-kafka-broker2
     restart: always
     depends_on:

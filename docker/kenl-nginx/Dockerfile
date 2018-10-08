@@ -21,6 +21,6 @@ RUN apt-get install -qqy nginx
 RUN apt-get update -qq
 
 # *********** RUN KENL ***************
-EXPOSE 80
+EXPOSE 80 24080
 WORKDIR "/opt/kenl/scripts/"
 ENTRYPOINT ["./nginx-entrypoint.sh"]
