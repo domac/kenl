@@ -92,6 +92,16 @@ function kafka_environment()
     sed -i "s/ES_JAVA_OPTS\=\-Xms2g \-Xmx2g/ES_JAVA_OPTS\=\-Xms4g \-Xmx4g/g" docker-compose-kenl.yml
 }
 
+function entrypoint_permission() {
+    for data in ${HOSTS[@]}  
+    do  
+        if [ -d $WORKSPACE/../docker/${data}/scripts ]; then
+            echo "[KENL-INSTALLATION-INFO] Setting permission ${data} ."
+            chmod +x $WORKSPACE/../docker/${data}/scripts/*
+        fi
+    done 
+}
+
 function evn_prepare()
 {
     set_hosts
@@ -99,6 +109,8 @@ function evn_prepare()
     install_docker_compose
 
     build_data_link
+
+    entrypoint_permission
 
     max_map_count
 
