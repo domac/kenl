@@ -5,6 +5,10 @@ dockerized gateway service for data push processing
 
 ## 如何使用
 
+安装依赖环境：
+- `docker` 
+- `docker-compose`
+
 (可选) 下载基本docker镜像
 
 ```
@@ -39,3 +43,7 @@ es监控dashboard
 浏览器访问：http://ip:9000
 
 ![cerebro](http://og0usnhfv.bkt.clouddn.com/cerebro.png)
+
+浏览器访问：http://ip:24080
+
+![kibana](http://og0usnhfv.bkt.clouddn.com/kibana.png)
