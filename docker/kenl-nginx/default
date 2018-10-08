@@ -7,8 +7,8 @@ server {
 
     server_name 127.0.0.1;
 
-    auth_basic "Restricted Access";
-    auth_basic_user_file /etc/nginx/htpasswd.users;
+    #auth_basic "Restricted Access";
+    #auth_basic_user_file /etc/nginx/htpasswd.users;
 
     location / {
         proxy_pass http://kenl-kibana:5601;
