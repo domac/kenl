@@ -6,7 +6,7 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # *********** Installing Prerequisites ***************
 # -qq : No output except for errors
-RUN echo "[KENL-NGINX] Updating Ubuntu base image.." \
+RUN echo "[KENL-NGINX] updating docker base image.." \
   && apt-get update -qq
 
 RUN apt-get -qy clean \

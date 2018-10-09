@@ -4,7 +4,7 @@ LABEL description="dockerfile base image"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "[KENL-BASE] setup ubuntu base image" \
+RUN echo "[KENL-BASE] setup base docker image" \
   && apt-get update -qq \
   && apt-get install -qqy \
   wget \

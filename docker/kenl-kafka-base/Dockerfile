@@ -4,9 +4,9 @@ LABEL description="dockerfile base image for kafka"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-RUN echo "[KENL-KAFKA-BASE] Updating Ubuntu base image.." \
+RUN echo "[KENL-KAFKA-BASE] updating docker base image.." \
   && apt-get update -qq \
-  && echo "[KENL-KAFKA-BASE] Extracting templates from packages.." \
+  && echo "[KENL-KAFKA-BASE] install jvm .." \
   && apt-get install -qqy \
   openjdk-8-jre-headless
 
