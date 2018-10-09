@@ -45,17 +45,6 @@ docker.io/phusion/baseimage                     0.10.1              2391dfad8777
 $ cd bin/ && sh kenl-install.sh
 ```
 
-es监控dashboard
-
-浏览器访问：http://ip:9000
-
-![cerebro](http://og0usnhfv.bkt.clouddn.com/cerebro.png)
-
-浏览器访问：http://ip:24080
-
-![kibana](http://og0usnhfv.bkt.clouddn.com/kibana.png)
-
-
 ## gateway部署
 
 ### 安装openresty
@@ -93,4 +82,18 @@ $ cd bin/ && sh gateway-install.sh
 ### 依赖
 
 [lua-resty-kafka](https://github.com/doujiang24/lua-resty-kafka)
+
+
+## 组件监控
+
+es监控dashboard
+
+浏览器访问：http://ip:9000
+
+![cerebro](http://og0usnhfv.bkt.clouddn.com/cerebro.png)
+
+浏览器访问：http://ip:24080
+
+![kibana](http://og0usnhfv.bkt.clouddn.com/kibana.png)
+
 
