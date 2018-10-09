@@ -9,13 +9,15 @@ function echoerror() {
 function kenl_start()
 {
     cd $WORKSPACE/../docker 
-    echo "[KENL-STARTUP-INFO] running KENL via docker-compose"
+    echo "[KENL-STARTUP-INFO] running kenl docker via docker-compose"
     docker-compose -f docker-compose-kenl.yml up --build -d >> $LOGFILE 2>&1
     ERROR=$?
     if [ $ERROR -ne 0 ]; then
         echoerror "Could not run KENL via docker-compose (Error Code: $ERROR)."
+        echo "[KENL-STARTUP-INFO] running kenl docker fail"
         exit 1
     fi
+    echo "[KENL-STARTUP-INFO] running kenl docker success"
 }
 
 kenl_start

@@ -1,19 +1,21 @@
 #!/bin/bash
 
 WORKSPACE=$(cd $(dirname $0)/; pwd)
-HOSTS=( kenl-elasticsearch kenl-logstash kenl-zookeeper kenl-kibana kenl-kafka-broker kenl-kafka-broker2 kenl-nginx ) 
+HOSTS=( kenl-elasticsearch kenl-logstash kenl-zookeeper kenl-kibana kenl-kafka-broker kenl-kafka-broker2 kenl-nginx kenl-spark-master kenl-spark-worker kenl-spark-worker2 ) 
 HOSTS_FILE="/etc/hosts"
 LOGFILE="${WORKSPACE}/install_docker.log"
+VOLUMESPATH="/data/volumes/esdata"
 function echoerror() {
     printf "${RC} * ERROR${EC}: $@\n" 1>&2;
 }
 
 function build_data_link()
 {
-    cd $WORKSPACE/../docker && mkdir -p esdata/_data
-    DOCKERPATH=$(cd $(dirname $0)/; pwd)
-    ln -sfnv $DOCKERPATH/esdata /var/lib/docker/volumes/esdata
-    ln -sfnv $DOCKERPATH/esdata /var/lib/docker/volumes/docker_esdata
+    cd $WORKSPACE/../docker
+    mkdir -p $VOLUMESPATH/_data
+    ln -sfnv $VOLUMESPATH /var/lib/docker/volumes/esdata
+    ln -sfnv $VOLUMESPATH /var/lib/docker/volumes/kenl_esdata
+    ln -sfnv $VOLUMESPATH /var/lib/docker/volumes/docker_esdata
 }
 
 function get_host_ip()
@@ -141,6 +143,8 @@ get_host_ip
 evn_prepare
 
 install_kenl
+
+sleep 120
 
 echo "[KENL-INSTALLATION-INFO] INSTALL FINISH"
 

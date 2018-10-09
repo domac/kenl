@@ -2,11 +2,10 @@
 
 WORKSPACE=$(cd $(dirname $0)/; pwd)
 
-version="0.0.1"
-dockerimages=( kenl-base kenl-kafka-base kenl-kafka-broker kenl-zookeeper )
+dockerimages=( kenl-base:0.0.1 kenl-kafka-base:0.0.1 kenl-kafka-broker:0.0.1 kenl-zookeeper:0.0.1 kenl-spark-base:0.0.1 kenl-spark-master:0.0.1 kenl-spark-worker:0.0.1 )
 for name in ${dockerimages[@]}
 do  
-    docker pull domacli/${name}:${version}
+    docker pull domacli/${name}
 done
 
 

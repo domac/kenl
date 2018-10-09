@@ -8,14 +8,17 @@ function echoerror() {
 
 function kenl_shutdown()
 {
-    cd $WORKSPACE/../docker 
-    echo "[KENL-SHUTDOWN-INFO] shutdown KENL via docker-compose"
-    docker-compose -f docker-compose-kenl.yml down >> $LOGFILE 2>&1
+    echo "[KENL-SHUTDOWN-INFO] stop kenl docker container now ..."
+    docker stop $(docker ps -aq) >> $LOGFILE 2>&1
     ERROR=$?
     if [ $ERROR -ne 0 ]; then
-        echoerror "Could not shutdown KENL via docker-compose (Error Code: $ERROR)."
+        echoerror "could not shutdown kenl  (Error Code: $ERROR)."
+        echo "[KENL-STARTUP-INFO] shutdown kenl docker fail"
         exit 1
     fi
+    #echo "[KENL-SHUTDOWN-INFO] clean docker container now ..."
+    #docker rm $(docker ps -aq)
+    echo "[KENL-SHUTDOWN-INFO] shutdown kenl docker finish. "
 }
 
 kenl_shutdown

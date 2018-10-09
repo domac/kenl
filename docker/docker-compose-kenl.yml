@@ -61,6 +61,43 @@ services:
       - kenl-kibana
     network_mode: "host"
 
+  kenl-spark-master:
+    image: domacli/kenl-spark-master:0.0.1
+    container_name: kenl-spark-master
+    ports:
+      - "8080:8080"
+      - "7077:7077"
+    restart: always
+    depends_on:
+      - kenl-elasticsearch
+    network_mode: "host"
+
+  kenl-spark-worker:
+    image: domacli/kenl-spark-worker:0.0.1
+    container_name: kenl-spark-worker
+    environment:
+      - SPARK_WORKER_MEMORY=1g
+      - SPARK_WORKER_WEBUI_PORT=8081
+    ports:
+      - "8081:8081"
+    restart: always
+    depends_on:
+      - kenl-spark-master
+    network_mode: "host"
+
+  kenl-spark-worker2:
+    image: domacli/kenl-spark-worker:0.0.1
+    container_name: kenl-spark-worker2
+    environment:
+      - SPARK_WORKER_MEMORY=1g
+      - SPARK_WORKER_WEBUI_PORT=8082
+    ports:
+      - "8082:8082"
+    restart: always
+    depends_on:
+      - kenl-spark-master
+    network_mode: "host"
+
   kenl-zookeeper:
     image: domacli/kenl-zookeeper:0.0.1
     container_name: kenl-zookeeper
