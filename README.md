@@ -2,7 +2,7 @@
 
 dockerized gateway service for data push processing
 
-简单组件架构如下：
+简单组件架构如下：
 
 ![edr](http://og0usnhfv.bkt.clouddn.com/edr.png)
 
