@@ -10,4 +10,4 @@ local get_post_data=_util.get_post_data
 
 local pushlog = get_post_data()
 
-ngx.ctx.messageList = pushloga
+ngx.ctx.messageList = pushlog

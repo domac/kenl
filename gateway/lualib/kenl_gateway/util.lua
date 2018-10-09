@@ -23,8 +23,6 @@ function _Util.get_remote_ip()
     return ip
 end
 
-return _Util
-
 
 function _Util.get_args()
     local args = {}
@@ -43,3 +41,6 @@ function _Util.request_time()
     local server_time=os.date("%Y-%m-%d %H:%M:%S",ngx_time);
     return server_time;
 end
+
+
+return _Util
