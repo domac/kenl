@@ -8,6 +8,7 @@ function echoerror() {
 
 function kenl_shutdown()
 {
+    cd $WORKSPACE/../docker 
     echo "[KENL-SHUTDOWN-INFO] stop kenl docker container now ..."
     #docker stop $(docker ps -aq) >> $LOGFILE 2>&1
     docker-compose -f docker-compose-kenl.yml stop >> $LOGFILE 2>&1
