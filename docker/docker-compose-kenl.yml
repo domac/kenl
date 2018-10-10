@@ -59,6 +59,15 @@ services:
     restart: always
     depends_on:
       - kenl-kibana
+      - kenl-jupyter
+    network_mode: "host"
+
+  kenl-jupyter:
+    image: domacli/kenl-jupyter:0.0.1
+    container_name: kenl-jupyter
+    restart: always
+    depends_on:
+      - kenl-elasticsearch
     network_mode: "host"
 
   kenl-spark-master:

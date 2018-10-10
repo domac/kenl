@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WORKSPACE=$(cd $(dirname $0)/; pwd)
-HOSTS=( kenl-elasticsearch kenl-logstash kenl-zookeeper kenl-kibana kenl-kafka-broker kenl-kafka-broker2 kenl-nginx kenl-spark-master kenl-spark-worker kenl-spark-worker2 ) 
+HOSTS=( kenl-elasticsearch kenl-logstash kenl-zookeeper kenl-kibana kenl-kafka-broker kenl-kafka-broker2 kenl-nginx kenl-spark-master kenl-spark-worker kenl-spark-worker2 kenl-jupyter ) 
 HOSTS_FILE="/etc/hosts"
 LOGFILE="${WORKSPACE}/install_docker.log"
 VOLUMESPATH="/data/volumes/esdata"
