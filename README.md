@@ -84,6 +84,36 @@ $ cd bin/ && sh gateway-install.sh
 [lua-resty-kafka](https://github.com/doujiang24/lua-resty-kafka)
 
 
+## 数据上报：
+
+演示格式：
+
+```
+{
+	"client_ip": ["192.168.0.1", "192.168.0.2", "192.168.0.3"],
+	"computer_name": "pc",
+	"mid": "abc123",
+	"cmds": [{
+		"cmd": 50101,
+		"time": "2018-09-20 12:02:30.453",
+		"data": {
+			"ProcessPath": "D:\\Program Files (X86)\\demo.exe",
+			"ProcessMd5": "testmd5123",
+			"ProcessId": 1024,
+			"CommandLine": "xxx.bat",
+			"Operation": "upload",
+			"FilePath": "D:\\Program Files (X86)\\demo.exe",
+			"FileMd5": "testmd5123"
+		}
+	}]
+}
+```
+演示上报
+
+```
+curl -XPOST -H 'Content-Type: application/json' 'http://your-gateway:10080/push' -d '{"client_ip":["192.168.0.1","192.168.0.2","192.168.0.3"],"computer_name":"pc","mid":"abc123","cmds":[{"cmd":50101,"time":"2018-09-20 12:02:30.453","data":{"ProcessPath":"D:\\Program Files (X86)\\demo.exe","ProcessMd5":"testmd5123","ProcessId":1024,"CommandLine":"xxx.bat","Operation":"upload","FilePath":"D:\\Program Files (X86)\\demo.exe","FileMd5":"testmd5123"}}]}'
+```
+
 ## 组件监控
 
 es监控dashboard
@@ -94,6 +124,6 @@ es监控dashboard
 
 浏览器访问：http://ip:24080
 
-![kibana](http://og0usnhfv.bkt.clouddn.com/kibana.png)
+![kibana](http://og0usnhfv.bkt.clouddn.com/kibana2.png)
 
 
