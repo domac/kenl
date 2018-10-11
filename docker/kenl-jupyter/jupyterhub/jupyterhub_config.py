@@ -9,4 +9,6 @@ c.Spawner.notebook_dir = '/opt/kenl/jupyterhub'
 
 c.JupyterHub.hub_ip = 'kenl-jupyter'
 c.JupyterHub.port = 8000
+c.JupyterHub.hub_port = 8181
+
 c.JupyterHub.base_url = '/jupyter'
