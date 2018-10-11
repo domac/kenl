@@ -130,3 +130,10 @@ curl -XPOST -H 'Content-Type: application/json' 'http://your-gateway:10080/push'
 ![kibana](http://og0usnhfv.bkt.clouddn.com/kibana2.png)
 
 
+#### Jupyter Notebook
+
+浏览器访问：http://ip:8000
+
+![jupyter](http://og0usnhfv.bkt.clouddn.com/jupyter.png)
+
+
