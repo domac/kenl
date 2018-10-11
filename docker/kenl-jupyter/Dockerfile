@@ -29,7 +29,7 @@ RUN curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 RUN apt-get install -y --no-install-recommends nodejs
 
 # *********** Installing KENL python packages ***************
-RUN pip3 install \
+RUN pip3 install  -i https://pypi.tuna.tsinghua.edu.cn/simple \
   pandas==0.23.4 \
   altair==2.2.2 \
   vega_datasets \
