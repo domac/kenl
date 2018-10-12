@@ -36,7 +36,7 @@ docker.io/yannart/cerebro                       0.8.1               a430c915d3ae
 docker.elastic.co/logstash/logstash             6.3.1               4647f67650d3        3 months ago        657.4 MB
 docker.elastic.co/kibana/kibana                 6.3.1               0bd7a7ea04f0        3 months ago        729.1 MB
 docker.elastic.co/elasticsearch/elasticsearch   6.3.1               fa7212eab151        3 months ago        783.5 MB
-domacli/jupyter                                 0.0.1               7703f00297f9        21 minutes ago      2.18GB
+ddocker.io/omacli/jupyter                       0.0.1               7703f00297f9        21 minutes ago      2.18GB
 docker.io/phusion/baseimage                     0.10.1              2391dfad8777        6 months ago        240.7 MB
 ```
 
