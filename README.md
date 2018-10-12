@@ -89,6 +89,8 @@ $ cd bin/ && sh gateway-install.sh
 
 演示格式：
 
+> 报文格式字段的制定和过滤可以参照 docker/kenl-logstash/pipeline/12-kenl-edr-filter.conf，自己也可以设计自定义的报文格式，放到 docker/kenl-logstash/pipeline/ 下即可
+
 ```
 {
 	"client_ip": ["192.168.0.1", "192.168.0.2", "192.168.0.3"],
@@ -112,7 +114,7 @@ $ cd bin/ && sh gateway-install.sh
 演示上报
 
 ```sh
-curl -XPOST -H 'Content-Type: application/json' 'http://your-gateway:10080/push' -d '{"client_ip":["192.168.0.1","192.168.0.2","192.168.0.3"],"computer_name":"pc","mid":"abc123","cmds":[{"cmd":50101,"time":"2018-09-20 12:02:30.453","data":{"ProcessPath":"D:\\Program Files (X86)\\demo.exe","ProcessMd5":"testmd5123","ProcessId":1024,"CommandLine":"xxx.bat","Operation":"upload","FilePath":"D:\\Program Files (X86)\\demo.exe","FileMd5":"testmd5123"}}]}'
+curl -XPOST -H 'Content-Type: application/json' 'http://your-gateway:12080/push' -d '{"client_ip":["192.168.0.1","192.168.0.2","192.168.0.3"],"computer_name":"pc","mid":"abc123","cmds":[{"cmd":50101,"time":"2018-09-20 12:02:30.453","data":{"ProcessPath":"D:\\Program Files (X86)\\demo.exe","ProcessMd5":"testmd5123","ProcessId":1024,"CommandLine":"xxx.bat","Operation":"upload","FilePath":"D:\\Program Files (X86)\\demo.exe","FileMd5":"testmd5123"}}]}'
 ```
 
 ## 组件监控
