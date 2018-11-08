@@ -38,6 +38,7 @@ docker.elastic.co/kibana/kibana                 6.3.1               0bd7a7ea04f0
 docker.elastic.co/elasticsearch/elasticsearch   6.3.1               fa7212eab151        3 months ago        783.5 MB
 ddocker.io/omacli/jupyter                       0.0.1               7703f00297f9        21 minutes ago      2.18GB
 docker.io/phusion/baseimage                     0.10.1              2391dfad8777        6 months ago        240.7 MB
+domacli/kenl-postgresql                         0.0.1               5c2d08c8aa5a        About an hour ago   257MB
 ```
 
 执行安装脚本
