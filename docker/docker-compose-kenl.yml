@@ -161,6 +161,20 @@ services:
       - kenl-elasticsearch
     network_mode: "host"
 
+  kenl-postgresql:
+    image: domacli/kenl-postgreql:0.0.1
+    container_name: kenl-postgreql
+    ports:
+      - "25432:25432"
+    restart: always
+    depends_on:
+      - kenl-elasticsearch
+    environment:
+      - REPLICATION_PORT=25432
+    volumes:
+      - ./kenl-postgresql/postgresql:/var/lib/postgresql
+    network_mode: "host"
+
 volumes:
   esdata:
     driver: local
