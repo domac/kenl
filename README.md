@@ -4,7 +4,7 @@ dockerized gateway service for data push processing
 
 简单组件架构如下：
 
-![edr](http://og0usnhfv.bkt.clouddn.com/edr.png)
+![edr](doc/edr.png)
 
 ## 如何使用
 
@@ -124,19 +124,19 @@ curl -XPOST -H 'Content-Type: application/json' 'http://your-gateway:12080/push'
 
 浏览器访问：http://ip:9000
 
-![cerebro](http://og0usnhfv.bkt.clouddn.com/cerebro.png)
+![cerebro](doc/cerebro.png)
 
 #### kibana dashboard
 
 浏览器访问：http://ip:24080
 
-![kibana](http://og0usnhfv.bkt.clouddn.com/kibana2.png)
+![kibana](doc/kibana.png)
 
 
 #### Jupyter Notebook
 
 浏览器访问：http://ip:8000
 
-![jupyter](http://og0usnhfv.bkt.clouddn.com/jupyter.png)
+![jupyter](doc/jupyter.png)
 
 
