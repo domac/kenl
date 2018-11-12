@@ -162,7 +162,7 @@ services:
     network_mode: "host"
 
   kenl-postgresql:
-    image: domacli/kenl-postgreql:0.0.1
+    image: domacli/kenl-postgresql:0.0.1
     container_name: kenl-postgreql
     ports:
       - "25432:25432"
@@ -172,7 +172,7 @@ services:
     environment:
       - REPLICATION_PORT=25432
     volumes:
-      - ./kenl-postgresql/postgresql:/var/lib/postgresql
+      - /data/postgresql/db:/var/lib/postgresql
     network_mode: "host"
 
 volumes:

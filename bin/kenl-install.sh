@@ -13,6 +13,7 @@ function build_data_link()
 {
     cd $WORKSPACE/../docker
     mkdir -p $VOLUMESPATH/_data
+    mkdir -p /data/postgresql/db
     ln -sfnv $VOLUMESPATH /var/lib/docker/volumes/esdata
     ln -sfnv $VOLUMESPATH /var/lib/docker/volumes/kenl_esdata
     ln -sfnv $VOLUMESPATH /var/lib/docker/volumes/docker_esdata
