@@ -12,33 +12,25 @@ dockerized gateway service for data push processing
 - `docker` 
 - `docker-compose`
 
-(可选) 下载基本docker镜像
+(可选) 下载构建基本docker镜像
 
 ```sh
 $ cd bin/ && sh build-images.sh
 ```
 
-执行后，检测相关镜像是否完成下载
+已支持内置的docker组件列表如下：
 
 ```sh
-$ docker images
-
-REPOSITORY                                      TAG                 IMAGE ID            CREATED             SIZE
-docker.io/domacli/kenl-spark-worker             0.0.1               3e357a046e96        11 minutes ago      979.2 MB
-docker.io/domacli/kenl-spark-master             0.0.1               bfcee358651c        14 minutes ago      979.2 MB
-docker.io/domacli/kenl-spark-base               0.0.1               bd0d99ad769c        2 hours ago         979.2 MB
-docker.io/domacli/kenl-nginx                    0.0.1               c736376ece66        27 hours ago        394.5 MB
-docker.io/domacli/kenl-zookeeper                0.0.1               0b4d35b55338        28 hours ago        529.8 MB
-docker.io/domacli/kenl-kafka-broker             0.0.1               cbc6e11bb9e0        29 hours ago        529.8 MB
-docker.io/domacli/kenl-kafka-base               0.0.1               c85c5f3814af        30 hours ago        529.8 MB
-docker.io/domacli/kenl-base                     0.0.1               94c1852db1ce        2 days ago          287.8 MB
-docker.io/yannart/cerebro                       0.8.1               a430c915d3ae        3 months ago        505.3 MB
-docker.elastic.co/logstash/logstash             6.3.1               4647f67650d3        3 months ago        657.4 MB
-docker.elastic.co/kibana/kibana                 6.3.1               0bd7a7ea04f0        3 months ago        729.1 MB
-docker.elastic.co/elasticsearch/elasticsearch   6.3.1               fa7212eab151        3 months ago        783.5 MB
-ddocker.io/omacli/jupyter                       0.0.1               7703f00297f9        21 minutes ago      2.18GB
-docker.io/phusion/baseimage                     0.10.1              2391dfad8777        6 months ago        240.7 MB
-domacli/kenl-postgresql                         0.0.1               5c2d08c8aa5a        About an hour ago   257MB
+cerebro
+elasticsearch
+jupyter
+kafka
+kibana
+logstash
+nginx
+postgresql
+spark
+zookeeper
 ```
 
 执行安装脚本
