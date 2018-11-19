@@ -36,8 +36,9 @@ zookeeper
 执行安装脚本
 
 ```sh
-$ cd bin/ && sh kenl-install.sh
+$ cd bin/ && sh kenl.sh install
 ```
+
 
 ## gateway部署
 
@@ -132,3 +133,34 @@ curl -XPOST -H 'Content-Type: application/json' 'http://your-gateway:12080/push'
 ![jupyter](doc/jupyter.png)
 
 
+### 相关管理命令
+
+- kenl 停止
+
+```sh
+$ cd bin/ && sh kenl.sh stop
+```
+
+- kenl 启动
+
+```sh
+$ cd bin/ && sh kenl.sh start
+```
+
+- kenl 重启
+
+```sh
+$ cd bin/ && sh kenl.sh restart
+```
+
+- kenl 安装
+
+```sh
+$ cd bin/ && sh kenl.sh install
+```
+
+- kenl 卸载
+
+```
+$ cd bin/ && sh kenl.sh clean
+```
