@@ -161,6 +161,6 @@ $ cd bin/ && sh kenl.sh install
 
 - kenl 卸载
 
-```
+```sh
 $ cd bin/ && sh kenl.sh clean
 ```
