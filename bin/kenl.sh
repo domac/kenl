@@ -133,19 +133,85 @@ function show_banner()
     echo "[KENL-INSTALLATION-INFO] WORKING DIR: ${WORKSPACE}"
 }
 
+
+function kenl_build() {
+    cd $WORKSPACE/../docker 
+    echo "[KENL-STARTUP-INFO] running kenl docker via docker-compose"
+    docker-compose -f docker-compose-kenl.yml up --build -d >> $LOGFILE 2>&1
+    ERROR=$?
+    if [ $ERROR -ne 0 ]; then
+        echoerror "Could not run KENL via docker-compose (Error Code: $ERROR)."
+        echo "[KENL-STARTUP-INFO] running kenl docker fail"
+        exit 1
+    fi
+    echo "[KENL-STARTUP-INFO] running kenl docker success"
+}
+
+function kenl_stop() {
+    docker ps -a | grep 'kenl-' | awk '{print $NF}' | xargs docker stop
+}
+
+function kenl_start() {
+    docker ps -a | grep 'kenl-' | awk '{print $NF}' | xargs docker start
+}
+
+
+function kenl_remove() {
+    docker ps -a | grep 'kenl-' | awk '{print $NF}' | xargs docker rm
+}
+
 # *********** KENL INSTALL DOCKER ***************
 
-echo "[KENL-INSTALLATION-INFO] INSTALL START"
 
-show_banner
+function kenl_install() {
+    echo "[KENL-INSTALLATION-INFO] INSTALL START"
 
-get_host_ip
+    show_banner
 
-evn_prepare
+    get_host_ip
 
-install_kenl
+    evn_prepare
 
-sleep 120
+    install_kenl
 
-echo "[KENL-INSTALLATION-INFO] INSTALL FINISH"
+    sleep 120
+
+    echo "[KENL-INSTALLATION-INFO] INSTALL FINISH"
+}
+
+case $1 in 
+build)
+    echo "kenl build"
+    kenl_build 
+;;
+
+start)
+    echo "kenl start"
+    kenl_start
+;;
+
+stop)
+    echo "kenl stop"
+    kenl_stop
+;;
+
+restart)
+    echo "kenl restart"
+    kenl_start
+    kenl_stop
+;;
+
+install)
+    echo "kenl install"
+    kenl_install 
+;;
+
+clean)
+    echo "kenl clean"
+    kenl_stop
+    kenl_remove 
+;;
+*)
+    echo "cmd args: start|stop|restart|install|clean|build"
+esac
 
